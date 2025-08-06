@@ -100,6 +100,13 @@ def insert_reading_to_db(data):
         # Extract data from the response
         reading_data = data.get('data', {})
         
+        # Convert temperature from Celsius to Fahrenheit
+        if 'temp' in reading_data and reading_data['temp'] is not None:
+            celsius_temp = reading_data['temp']
+            fahrenheit_temp = (celsius_temp * 9/5) + 32
+            reading_data['temp'] = round(fahrenheit_temp, 2)
+            print(f"Converted temperature: {celsius_temp}°C → {fahrenheit_temp}°F")
+        
         # Insert query
         insert_query = """
         INSERT INTO airthings_readings (
