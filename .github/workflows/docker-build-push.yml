@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  DOCKER_IMAGE: rhprasad0/airthings-pg
+  DOCKER_IMAGE: rhprasad/airthings-pg
   REGISTRY: docker.io
 
 jobs:
